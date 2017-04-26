@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="User")
 @Table(name = "users")
 public class User {
 
@@ -16,6 +16,7 @@ public class User {
 	@Column
 	@SequenceGenerator(name = "id_seq", sequenceName = "id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
+	@org.springframework.data.annotation.Id
 	private int id;
 	@Column
 	private String name;

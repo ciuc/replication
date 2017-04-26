@@ -1,27 +1,20 @@
 package replication.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import replication.postgres.generation.PgDatabaseGenerator;
-import replication.postgres.model.User;
 
-public class DbGenerator {
+public class DbGeneratorApp {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
 		PgDatabaseGenerator pgDatabaseGenerator = context.getBean(PgDatabaseGenerator.class);
 
-		List<User> users = new ArrayList<User>();
-		for (int count = 0; count <= 1000000; count++) {
-			users.add(pgDatabaseGenerator.getRandomUser());
+		Number users = pgDatabaseGenerator.generateUsers(10000);
 
-		}
-		pgDatabaseGenerator.getUserDao().saveBatch(users);
+		System.out.println("Now in db: " + users + " users");
 
 	}
 }

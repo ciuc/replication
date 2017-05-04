@@ -45,11 +45,7 @@ public class PgDatabaseGenerator {
 		getUserDao().saveBatch(users);
 		System.out.println("Finished saving batch of " + count + " users");
 
-		Session session = m_sessionFactory.getObject().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		Number result = (Number) session.createCriteria(User.class).setProjection(Projections.rowCount()).uniqueResult();
-		tx.commit();
-		return result;
+		return getUserDao().countUsers();
 
 	}
 

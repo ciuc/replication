@@ -21,7 +21,8 @@ public abstract class AbstractReplicationManager {
 		}
 	}
 
-	public abstract void insertPagedUsers();
+	public abstract void insertPagedUsers(int page);
+
 	public void cleanup() {
 		m_repository.deleteAll();
 	}

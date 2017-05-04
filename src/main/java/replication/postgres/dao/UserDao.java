@@ -9,5 +9,7 @@ public interface UserDao {
 	public void save(User u);
 	public List<User> getUsers();
 	void saveBatch(List<User> users);
+	public Number countUsers();
+	List<User> getPagedUsers(int page, int count);
 	
 }
